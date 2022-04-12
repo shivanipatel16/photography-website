@@ -1,5 +1,5 @@
 home + learning ui:
-- need three tmeplates (learning, explore with one slider, explore with two sliders)
+- need three templates (learning, explore with one slider, explore with two sliders)
 - on each html render, render appropriate text, image
 - when we finish exploring each of the iso/aperture/shutter, go back to lesson page
 - pressing "start" on home page resets to default state

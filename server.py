@@ -6,6 +6,18 @@ import pprint
 
 app = Flask(__name__)
 
+# {topic: True/False} # whether or not that topic's last page has been visited
+visited_topics = {
+    "iso": False,
+    "explore-iso": False,
+    "aperture": False,
+    "explore-aperture": False,
+    "shutter-speed": False,
+}
+
+# {topic: [topic_type, [topic_sentences: str]]}
+topic_info = {}
+
 def get_static_lesson_image(lesson_on):
     # TODO: shivani
     images = ["_SVP2779.jpg", "f / 1.4", "_SVP2779.jpg", "f / 3.9"]
