@@ -1,6 +1,19 @@
 {% extends "layout.html" %} {% block content %}
 
-hi this is the home page
-slide 1 of google slides
+<head>
+    <link rel="stylesheet" href="{{url_for('static', filename='home.css')}}" />
+    <script
+    type="text/javascript"
+    src="{{ url_for('static', filename='home.js') }}"
+  ></script>
+</head>
+<body>
+<div class="title">Learn How to take a Manual Photograph<div>
+<button id="start">Start</button>
+<br>
+<button id="quiz">Quiz Me!</button>
+
+</body>
+
 
 {% endblock %}
