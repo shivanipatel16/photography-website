@@ -1,0 +1,17 @@
+home + learning ui:
+- need three tmeplates (learning, explore with one slider, explore with two sliders)
+- on each html render, render appropriate text, image
+- when we finish exploring each of the iso/aperture/shutter, go back to lesson page
+- pressing "start" on home page resets to default state
+- can quiz at any point
+- cannot explore iso/aperture/shutter without learning first
+    - for lessons with sliders, send down/store all relevant images in initial page render
+    - pure js toggling between images with each discrete slider state
+- persistent "quiz" button on the nav bar, conditional "quiz" button appears on the lesson page only if all "explore" sections visited
+
+quiz ui:
+ - only need one quiz_question_template.html page
+ - on each html render, render appropriate text, image
+ - store user state / quiz data on webserver
+    - so that when user clicks "review," they can "return to quiz" (see slide 24/25 on ppt)
+ - store user score (# correct / # total)
