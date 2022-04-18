@@ -2,4 +2,45 @@
 
 this has the question #
 
+<script>
+    let data = {{data|tojson}} 
+
+    let nextq = data.nextquestion
+
+
+    $(document).ready(function () { 
+
+
+
+
+
+        $('#nextbutton').click(function () { 
+            window.location.href = "/assessment/"+nextq; 
+        });
+
+
+    });
+
+
+
+
+</script> 
+
+
+<div class = data_questiontext> {{data.text}} </div>
+
+<div class = image> <img alt = "image for question" src = {{data.image}}> </div>
+
+
+<div class = choice1> {{data.choice1}}  </div>
+
+<div class = choice2> {{data.choice2}}  </div>
+
+<div class = choice3> {{data.choice3}}  </div>
+
+<div class = choice4> {{data.choice4}}  </div>
+
+
+<button id = "nextbutton" class="btn-styled" type="button">Next Question</button> 
+
 {% endblock %}

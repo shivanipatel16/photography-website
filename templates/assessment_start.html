@@ -1,6 +1,23 @@
 {% extends "layout.html" %} {% block content %}
 
-this has the start quiz button
-slide 23
+
+<script> 
+
+    $(document).ready(function () { 
+        $('#startbutton').click(function () { 
+            window.location.href = "/assessment/1"; 
+        });
+
+    });
+
+
+</script> 
+
+<div class = "header"> Ready to Start the Quiz?</div>
+
+<button id = "startbutton" class="btn-styled" type="button">Start Quiz</button>
+
+
+
 
 {% endblock %}
