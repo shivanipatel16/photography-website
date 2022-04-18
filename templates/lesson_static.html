@@ -4,22 +4,16 @@
     <link rel="stylesheet" href="{{url_for('static', filename='lesson.css')}}" />
 </head>
 <body>
-  <title>ISO Lesson</title>
   <div class="row">
-    Let's say you are ready to take a photo.</div>
-    <div class="row">
-    You should always assess the light by considering the weather, artificial
-    light, and shadows.</div>
-    <div class="row">
-    ISO helps you adjust for the light by simply allowing you to brighten or
-    darken the photo.</div>
-
+  <title>{{title}}</title>
   </div>
-
+  {% for d in desc %}
+    <div class="row">{{d}}</div>
+  {% endfor %}
   <div class="row">
-    <div class="col-md-6">ISO 500<img class="static-img" src="{{url_for('static', filename='_SVP2779.jpg')}}"></div>
-    <div class="col-md-6">ISO 7200<img class="static-img" src="{{url_for('static', filename='_SVP2779.jpg')}}"></div>
-  </div>
+    <div class="col-md-6">ISO 500<img class="static-img" src="{{url_for('static', filename='static_photos/test.jpg')}}"></div>
+    <div class="col-md-6">ISO 7200<img class="static-img" src="{{url_for('static', filename='static_photos/_SVP2779.jpg')}}"></div>
+    </div>
 
   <button>Next</button>
 </body>
