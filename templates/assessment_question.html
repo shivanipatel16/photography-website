@@ -5,17 +5,53 @@ this has the question #
 <script>
     let data = {{data|tojson}} 
 
-    let nextq = data.nextquestion
+    let nextq = data.nextqnumber;
+
+    let curq = data.currentqnumber;
+
+    let correct_ans = data.correctanswer;
+
+
+
+    function update_userscore(correct_tally){
+    let data_to_add = correct_tally
+    $.ajax({
+        type: "POST",
+        url: "/update_userscore",                
+        dataType : "json",
+        contentType: "application/json; charset=utf-8",
+        data : JSON.stringify(data_to_add),
+        success: function(result){     
+               
+        },
+        error: function(request, status, error){
+            console.log("Error");
+            console.log(request)
+            console.log(status)
+            console.log(error)
+        }
+    });
+
+}
 
 
     $(document).ready(function () { 
 
 
-
-
-
         $('#nextbutton').click(function () { 
             window.location.href = "/assessment/"+nextq; 
+        });
+
+        $('input[name="test"]').click(function () { 
+            let user_ans = $(this).val();
+            if (user_ans = correct_ans){
+                // send back that the person got it right, else got it wrong 
+            }
+        });
+
+
+        $('#reviewbutton').click(function () { 
+            //send back current question #; 
         });
 
 
@@ -32,15 +68,17 @@ this has the question #
 <div class = image> <img alt = "image for question" src = {{data.image}}> </div>
 
 
-<div class = choice1> {{data.choice1}}  </div>
 
-<div class = choice2> {{data.choice2}}  </div>
 
-<div class = choice3> {{data.choice3}}  </div>
-
-<div class = choice4> {{data.choice4}}  </div>
+<form class = "choices"> 
+    <input name="test" type="radio" value="1" /> A) {{data.choice1}}
+    <input name="test" type="radio" value="2" /> B) {{data.choice2}}
+    <input name="test" type="radio" value="3" /> C) {{data.choice3}}
+    <input name="test" type="radio" value="4" /> D) {{data.choice4}} 
+</form>
 
 
 <button id = "nextbutton" class="btn-styled" type="button">Next Question</button> 
+<button id = "reviewbutton" class="btn-styled" type="button">Next Question</button> 
 
 {% endblock %}
