@@ -16,18 +16,58 @@ app.config['STATIC_PHOTOS'] = STATIC_PHOTOS
 app.config['INTERACTIVE_PHOTOS'] = INTERACTIVE_PHOTOS
 app.config['INTERACTIVE_2_PHOTOS'] = INTERACTIVE_2_PHOTOS
 
-# {quiz#: [str: user_answer, str: answer, str: explanation]}
+# {quiz#: [str: quiz_question, str[]: quiz_options, str: user_answer, 
+#          str: answer, str: explanation, str: image_filename int: correct_bool]}
 quiz_questions = {
-    "1": ["", "a", ""],
-    "2": ["", "", ""], # TODO: convert this question to multiple choice
-    "3": ["", "b", ""],
-    "4": ["", "a", ""],
-    "5": ["", "a", ""],
-    "6": ["", "a", ""],
-    "7": ["", "b", ""],
-    "8": ["", "a", ""],
-    "9": ["", "c", ""],
-    "10": ["", "", ""]
+    "1": ["What should the photographer do to address the noise in the image?",
+         ["Lower the ISO and make the shutter speed slower.",
+          "Lower the aperture and make the shutter speed faster.",
+          "Lower the ISO.",
+          "Increase the aperture and increase the ISO."],
+          "", "0", "", "", -1],
+    "2": ["Which options will help decrease the brightness of an image the most?",
+         ["Increase the ISO level, make the shutter speed faster, increase the aperture",
+          "Decrease the ISO level, make the shutter speed slower, decrease the aperture",
+          "Increase the ISO level, make the shutter speed faster, decrease the aperture",
+          "Decrease the ISO level, make the shutter speed faster, increase the aperture"],
+          "", "3", "", "", -1], # TODO: convert this question to multiple choice
+    "3": ["Why is this image blurry?",
+         ["Exposure", "Shutter speed", "ISO", "Aperture"],
+          "", "1", "", "", -1],
+    "4": ["Rhonda took this image on the left with the settings, and she was hoping to retake it to look more like the image on the right. What can Rhonda change to get her desired photograph?",
+         ["Lower the aperture", "Zoom in on the flower", 
+          "Increase the ISO", "Make the shutter speed faster"],
+          "", "0", "", "", -1],
+    "5": ["This couple wants to take their engagement portrait outdoors. What do they have to account for in this setting?",
+         ["Bright outdoor light, and focus on subjects’ faces",
+          "Background clarity and details",
+          "Subject motion",
+          "Nothing"],
+          "", "0", "", "", -1],
+    "6": ["The photographer has decided to adjust for sunny, bright  outdoor lighting. What settings should be adjusted to account for those conditions?",
+         ["Fast shutter speed + low ISO",
+          "Slow shutter speed + low ISO",
+          "Slow shutter speed + high ISO",
+          "Fast shutter speed + high ISO"],
+          "", "0", "", "", -1],
+    "7": ["What camera settings did the photographer use to take this picture?",
+         ["Fast shutter speed + low ISO",
+          "Slow shutter speed + low ISO",
+          "Slow shutter speed + high ISO",
+          "Fast shutter speed + high ISO"],
+          "", "1", "", "", -1],
+    "8": ["What setting was changed in the second photo, and what was the effect?",
+         ["Aperture; background became more detailed",
+          "ISO, background became brighter",
+          "Shutter speed; background became more detailed",
+          "Nothing"],
+          "", "0", "", "", -1],
+    "9": ["What should be done to put the Capitol Building in focus?",
+         ["Increase ISO",
+          "Lower the aperture",
+          "Increase the aperture and move the focal point",
+          "Increase the shutter speed"],
+          "", "2", "", "", -1],
 }
 
 # {topic: [str: title, int: visit_timestamp, str[]: topic_sentences, str[]: image_filenames]}
@@ -148,7 +188,26 @@ def assessment_start():
 
 @app.route('/assessment/<question>')
 def assessment_question(question):
-    return render_template('assessment_question.html', data=question)
+    if question not in quiz_questions.keys():
+        return render_template('assessment_start.html')
+
+    info_arr = quiz_questions[question]
+    text = info_arr[0]
+    [choice1, choice2, choice3, choice4] = info_arr[1]
+    currentqnumber = question
+    nextqnumber = str(int(question) + 1)
+    correct_ans = info_arr[3]
+    data = {
+        "nextqnumber": nextqnumber,
+        "currentqnumber": currentqnumber,
+        "correctanswer": correct_ans,
+        "text": text,
+        "choice1": choice1,
+        "choice2": choice2,
+        "choice3": choice3,
+        "choice4": choice4
+    }
+    return render_template('assessment_question.html', data=data)
 
 @app.route('/assessment_complete')
 def assessment_complete():
