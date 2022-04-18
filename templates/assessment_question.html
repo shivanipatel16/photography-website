@@ -14,6 +14,7 @@
 
     function update_userscore(correct_tally) {
         let data_to_add = correct_tally
+        // console.log(data_to_add)
         $.ajax({
             type: "POST",
             url: "/update_userscore",
@@ -21,7 +22,7 @@
             contentType: "application/json; charset=utf-8",
             data: JSON.stringify(data_to_add),
             success: function (result) {
-
+                print(result)
             },
             error: function (request, status, error) {
                 console.log("Error");
@@ -60,6 +61,8 @@
 
 
         $('#nextbutton').click(function () {
+            url =window.location.href = "/assessment/" + nextq;
+            // console.log(url)
             window.location.href = "/assessment/" + nextq;
             if (nextq == 9){
                 $('#nextbutton').click(function () { 
@@ -70,6 +73,8 @@
 
         $('input[name="test"]').click(function () {
             let user_ans = $(this).val();
+            // console.log("user_ans" + user_ans)
+            // console.log("correct_answer" + correct_ans)
             if (user_ans == correct_ans) {
                 let correct_tally = 1;
                 update_userscore(correct_tally);
@@ -104,14 +109,14 @@
 
 
 <form class="choices">
-    <input name="test" type="radio" value="1" /> A) {{data.choice1}}
-    <input name="test" type="radio" value="2" /> B) {{data.choice2}}
-    <input name="test" type="radio" value="3" /> C) {{data.choice3}}
-    <input name="test" type="radio" value="4" /> D) {{data.choice4}}
+    <input name="test" type="radio" value="0" /> A) {{data.choice1}} <br>
+    <input name="test" type="radio" value="1" /> B) {{data.choice2}} <br>
+    <input name="test" type="radio" value="2" /> C) {{data.choice3}} <br>
+    <input name="test" type="radio" value="3" /> D) {{data.choice4}}
 </form>
 
 
 <button id="nextbutton" class="btn-styled" type="button">Next Question</button>
-<button id="reviewbutton" class="btn-styled" type="button">Review </button>
+<button id="reviewbutton" class="btn-styled" type="button">Review</button>
 
 {% endblock %}
