@@ -104,6 +104,11 @@ interactive_2_lesson_info = {
     "aperture-shutter_speed": ["aperture-shutter_speed", -1, [], [], -1]
 }
 
+
+userscore = 0
+
+question_to_review = -1
+
 def get_static_lesson_image(lesson_on):
     # TODO: shivani
     images = ["_SVP2779.jpg", "f / 1.4", "_SVP2779.jpg", "f / 3.9"]
@@ -208,6 +213,37 @@ def assessment_question(question):
         "choice4": choice4
     }
     return render_template('assessment_question.html', data=data)
+
+
+@app.route('/update_userscore', methods=['GET', 'POST'])
+def add_entry():
+    global userscore
+
+    json_data = request.get_json()   
+    score_tally = int(json_data)
+
+    userscore = userscore + score_tally 
+
+@app.route('/update_userscore', methods=['GET', 'POST'])
+def update_userscore(correct_tally):
+    global userscore
+
+    json_data = request.get_json()   
+    score_tally = int(json_data)
+
+    userscore = userscore + score_tally 
+
+    return jsonify(userscore = userscore)
+
+@app.route('/review_currquestion', methods=['GET', 'POST'])
+def review_currquestion (currq):
+    global question_to_review
+
+    json_data = request.get_json()   
+    question_to_review= int(json_data)
+
+    return jsonify(question_to_review = question_to_review)
+
 
 @app.route('/assessment_complete')
 def assessment_complete():
