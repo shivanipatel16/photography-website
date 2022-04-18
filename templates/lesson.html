@@ -1,8 +1,26 @@
 {% extends "layout.html" %} {% block content %}
 
+<script> 
+$(document).ready(function () {
+    $("#quiz").click(function (event){
+        window.location = "/assessment_start"
+    })
 
-hi this is the lesson page
-where all of the lessons are listed
+    $("#learn_iso").click(function (event){
+        window.location = "/lesson/iso"
+    })
+    $("#learn_aper").click(function (event){
+        window.location = "/lesson/aperture"
+    })
+
+    $("#learn_ss").click(function (event){
+        window.location = "/lesson/shutterspeed"
+    })
+
+
+
+});
+</script>
 
 <div id="basic-lessons">
 iso, explore iso, aperture, explore aperture, shutter speed, explore shutter speed
@@ -11,5 +29,17 @@ iso, explore iso, aperture, explore aperture, shutter speed, explore shutter spe
 <div id="deeper-dive-lessons">realtion between stuff</div>
 
 <button id="quiz">Quiz Now</button>
-<button id="learn">Learn Now</button>
+
+
+<button id="learn_iso"> Learn Iso </button>
+
+<button id="learn_aper">Learn Aperture</button>
+
+<button id="learn_ss">Learn Shutter Speed</button>
+
+<button id="learn_iso_inter">Learn Iso Interactively</button>
+
+<button id="learn_aper_inter">Learn Aperture Interactively</button>
+
+<button id="learn_ss_inter">Learn shutterspeed Interactively</button>
 {% endblock %}
