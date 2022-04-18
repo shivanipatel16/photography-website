@@ -22,7 +22,7 @@
             contentType: "application/json; charset=utf-8",
             data: JSON.stringify(data_to_add),
             success: function (result) {
-                print(result)
+                console.log(result)
             },
             error: function (request, status, error) {
                 console.log("Error");
@@ -59,15 +59,18 @@
 
     $(document).ready(function () {
 
+        console.log("currq is: " + currq)
+        if (currq == 9) {
+            console.log("complete next")
+        }
 
         $('#nextbutton').click(function () {
             url =window.location.href = "/assessment/" + nextq;
-            // console.log(url)
+            console.log(url)
             window.location.href = "/assessment/" + nextq;
-            if (nextq == 9){
-                $('#nextbutton').click(function () { 
-                    window.location.href = "/assessment_complete";
-                 });
+            if (currq == 9){
+                console.log("nextq is 9")
+                window.location.href = "/assessment_complete";
             }
         });
 
