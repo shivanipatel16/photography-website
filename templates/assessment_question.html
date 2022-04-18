@@ -4,9 +4,9 @@
 <script>
     let data = {{ data| tojson}}
 
-    let nextq = data.nextqnumber;
+    let nextq = parseInt(data.nextqnumber,10);
 
-    let currq = data.currentqnumber;
+    let currq = parseInt(data.currentqnumber,10);
 
     let correct_ans = parseInt(data.correctanswer,10);
 
@@ -33,7 +33,7 @@
 
     }
 
-    function (currq){
+    function review_currquestion(currq){
         let data_to_add = currq
         $.ajax({
             type: "POST",
@@ -61,6 +61,11 @@
 
         $('#nextbutton').click(function () {
             window.location.href = "/assessment/" + nextq;
+            if (nextq == 9){
+                $('#nextbutton').click(function () { 
+                    window.location.href = "/assessment_complete";
+                 });
+            }
         });
 
         $('input[name="test"]').click(function () {
@@ -107,6 +112,6 @@
 
 
 <button id="nextbutton" class="btn-styled" type="button">Next Question</button>
-<button id="reviewbutton" class="btn-styled" type="button">Next Question</button>
+<button id="reviewbutton" class="btn-styled" type="button">Review </button>
 
 {% endblock %}
