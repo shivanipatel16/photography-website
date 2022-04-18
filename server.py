@@ -216,15 +216,6 @@ def assessment_question(question):
 
 
 @app.route('/update_userscore', methods=['GET', 'POST'])
-def add_entry():
-    global userscore
-
-    json_data = request.get_json()   
-    score_tally = int(json_data)
-
-    userscore = userscore + score_tally 
-
-@app.route('/update_userscore', methods=['GET', 'POST'])
 def update_userscore(correct_tally):
     global userscore
 
