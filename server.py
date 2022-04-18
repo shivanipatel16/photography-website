@@ -9,12 +9,13 @@ import time
 STATIC_PHOTOS = os.path.join('static', 'static_photos')
 INTERACTIVE_PHOTOS = os.path.join('static', 'interactive_photos')
 INTERACTIVE_2_PHOTOS = os.path.join('static', 'interactive_2_photos')
-
+QUIZ_PHOTOS = os.path.join('static', 'quiz_photos')
 
 app = Flask(__name__)
 app.config['STATIC_PHOTOS'] = STATIC_PHOTOS
 app.config['INTERACTIVE_PHOTOS'] = INTERACTIVE_PHOTOS
 app.config['INTERACTIVE_2_PHOTOS'] = INTERACTIVE_2_PHOTOS
+app.config['QUIZ_PHOTOS'] = QUIZ_PHOTOS
 
 # {quiz#: [str: quiz_question, str[]: quiz_options, str: user_answer, 
 #          str: answer, str: explanation, str: image_filename int: correct_bool]}
@@ -202,6 +203,8 @@ def assessment_question(question):
     currentqnumber = question
     nextqnumber = str(int(question) + 1)
     correct_ans = info_arr[3]
+    image = "\\" + os.path.join(app.config['QUIZ_PHOTOS'], f"{question}.jpg")
+    print(image)
     data = {
         "nextqnumber": nextqnumber,
         "currentqnumber": currentqnumber,
@@ -210,28 +213,20 @@ def assessment_question(question):
         "choice1": choice1,
         "choice2": choice2,
         "choice3": choice3,
-        "choice4": choice4
+        "choice4": choice4,
+        "image": image
     }
     return render_template('assessment_question.html', data=data)
 
-
 @app.route('/update_userscore', methods=['GET', 'POST'])
-def add_entry():
+def update_userscore(correct_tally=None):
     global userscore
 
     json_data = request.get_json()   
     score_tally = int(json_data)
-
+    # print(json_data)
     userscore = userscore + score_tally 
-
-@app.route('/update_userscore', methods=['GET', 'POST'])
-def update_userscore(correct_tally):
-    global userscore
-
-    json_data = request.get_json()   
-    score_tally = int(json_data)
-
-    userscore = userscore + score_tally 
+    # print(f"userscore: {userscore}/{9}")
 
     return jsonify(userscore = userscore)
 
@@ -247,7 +242,7 @@ def review_currquestion (currq):
 
 @app.route('/assessment_complete')
 def assessment_complete():
-    return render_template('assessment_complete.html')
+    return render_template('assessment_complete.html', userscore=userscore)
 
 if __name__ == '__main__':
     app.run(debug=True)
