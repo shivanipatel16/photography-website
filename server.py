@@ -71,7 +71,8 @@ quiz_questions = {
           "", "2", "", "", -1],
 }
 
-# {topic: [str: title, int: visit_timestamp, str[]: topic_sentences, str[]: image_filenames]}
+# {topic: [str: title, int: visit_timestamp, str[]: topic_sentences, 
+#          str[]: image_filenames, int: from_quiz_#]}
 static_lesson_info = {
     "iso": ["iso", -1, 
            ["Let's say you are ready to take a photo.",
@@ -90,7 +91,8 @@ static_lesson_info = {
            [], -1]
 }
 
-# {topic: [str: title, int: visit_timestamp, str[]: topic_sentences, str[]: image_filenames]}
+# {topic: [str: title, int: visit_timestamp, str[]: topic_sentences, 
+#          str[]: image_filenames, int: from_quiz_#]]}
 interactive_lesson_info = {
     "iso": ["iso", -1, [], [], -1],
     "aperture": ["aperture", -1, [], [], -1],
