@@ -110,18 +110,11 @@ userscore = 0
 
 question_to_review = -1
 
-def get_static_lesson_image(lesson_on):
-    # TODO: shivani
-    images = ["_SVP2779.jpg", "f / 1.4", "_SVP2779.jpg", "f / 3.9"]
 
 def get_interactive_lesson_image(lesson_on, iso=None, f_stop=None, shutter_speed=None):
     # TODO: group -- think about how we are going to say which iso is available, how are we going to round, etc?
     # TODO: shivani
     return "_SVP2779.jpg", iso, f_stop, shutter_speed
-
-def get_quiz_image(question_number):
-    # TODO: shivani
-    return "_SVP2779.jpg"
 
 @app.route('/')
 def welcome():
@@ -148,7 +141,11 @@ def static_lesson(lesson_topic):
     static_lesson_info[lesson_topic] = info_arr
     print(static_lesson_info[lesson_topic])
 
-    return render_template('lesson_static.html', title=lesson_title, desc=lesson_sentences, info=info_arr)
+    # TODO: pass in the photo setting to the frontend (what is the iso, aperture, shutter speed?)
+    image1 = "\\" + os.path.join(app.config['STATIC_PHOTOS'], f"{lesson_title}-lesson-1.jpg")
+    image2 = "\\" + os.path.join(app.config['STATIC_PHOTOS'], f"{lesson_title}-lesson-2.jpg")
+    
+    return render_template('lesson_static.html', title=lesson_title, desc=lesson_sentences, info=info_arr, image1=image1, image2=image2)
 
 # /lesson/interactive/iso
 # /lesson/interactive/aperture

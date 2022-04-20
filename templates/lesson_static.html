@@ -1,21 +1,26 @@
 {% extends "layout.html" %} {% block content %}
 
 <head>
-    <link rel="stylesheet" href="{{url_for('static', filename='lesson.css')}}" />
+  <link rel="stylesheet" href="{{url_for('static', filename='lesson.css')}}" />
 </head>
+
 <body>
   <div class="row">
-  <title>{{title}}</title>
+    {{title}}
   </div>
   {% for d in desc %}
-    <div class="row">{{d}}</div>
+  <div class="row">{{d}}</div>
   {% endfor %}
   <div class="row">
-    <div class="col-md-6">ISO 500<img class="static-img" src="{{url_for('static', filename='static_photos/test.jpg')}}"></div>
-    <div class="col-md-6">ISO 7200<img class="static-img" src="{{url_for('static', filename='static_photos/_SVP2779.jpg')}}"></div>
+    <div class="col-md-6">
+      ISO 500
+   
+        <img class="static-img" alt="image for question" src={{image1}}> </div>
+      <div class="col-md-6">
+        ISO 7200<img class="static-img" alt="image for question" src={{image2}}></div>
     </div>
 
-  <button>Next</button>
+    <button>Next</button>
 </body>
 
 {% endblock %}
