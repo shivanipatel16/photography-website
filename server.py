@@ -142,6 +142,8 @@ def static_lesson(lesson_topic):
     # copy back over info arr to dictionary
     static_lesson_info[lesson_topic] = info_arr
     print(static_lesson_info[lesson_topic])
+    image1 = "\\" + os.path.join(app.config['STATIC_PHOTOS'], f"{lesson_topic}-lesson-1.jpg")
+    image2 = "\\" + os.path.join(app.config['STATIC_PHOTOS'], f"{lesson_topic}-lesson-2.jpg")
 
     # TODO: pass in the photo setting to the frontend (what is the iso, aperture, shutter speed?)
     image1 = "\\" + os.path.join(app.config['STATIC_PHOTOS'], f"{lesson_title}-lesson-1.jpg")
