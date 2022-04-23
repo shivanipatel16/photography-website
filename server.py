@@ -71,7 +71,8 @@ quiz_questions = {
           "", "2", "", "", -1],
 }
 
-# {topic: [str: title, int: visit_timestamp, str[]: topic_sentences, str[]: image_filenames]}
+# {topic: [str: title, int: visit_timestamp, str[]: topic_sentences, 
+#          str[]: image_filenames, int: from_quiz_#]}
 static_lesson_info = {
     "iso": ["iso", -1, 
            ["Let's say you are ready to take a photo.",
@@ -90,7 +91,8 @@ static_lesson_info = {
            [], -1]
 }
 
-# {topic: [str: title, int: visit_timestamp, str[]: topic_sentences, str[]: image_filenames]}
+# {topic: [str: title, int: visit_timestamp, str[]: topic_sentences, 
+#          str[]: image_filenames, int: from_quiz_#]]}
 interactive_lesson_info = {
     "iso": ["iso", -1, [], [], -1],
     "aperture": ["aperture", -1, [], [], -1],
@@ -140,6 +142,8 @@ def static_lesson(lesson_topic):
     # copy back over info arr to dictionary
     static_lesson_info[lesson_topic] = info_arr
     print(static_lesson_info[lesson_topic])
+    image1 = "\\" + os.path.join(app.config['STATIC_PHOTOS'], f"{lesson_topic}-lesson-1.jpg")
+    image2 = "\\" + os.path.join(app.config['STATIC_PHOTOS'], f"{lesson_topic}-lesson-2.jpg")
 
     # TODO: pass in the photo setting to the frontend (what is the iso, aperture, shutter speed?)
     image1 = "\\" + os.path.join(app.config['STATIC_PHOTOS'], f"{lesson_title}-lesson-1.jpg")
