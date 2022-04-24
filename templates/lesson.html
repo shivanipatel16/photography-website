@@ -1,61 +1,66 @@
 {% extends "layout.html" %} {% block content %}
+
 <head>
-<script type="text/javascript" src="{{ url_for('static', filename='home.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='home.js') }}"></script>
 </head>
 
-<script> 
-$(document).ready(function () {
-    $("#quiz").click(function (event){
-        window.location = "/assessment_start"
-    })
+<script>
+    $(document).ready(function () {
+        $("#quiz").click(function (event) {
+            window.location = "/assessment_start"
+        })
 
-    $("#learn_iso").click(function (event){
-        window.location = "/lesson/iso"
-    })
+        $("#learn_iso").click(function (event) {
+            window.location = "/lesson/iso"
+        })
 
-    $("#learn_aper").click(function (event){
-        window.location = "/lesson/aperture"
-    })
+        $("#learn_aper").click(function (event) {
+            window.location = "/lesson/aperture"
+        })
 
-    $("#learn_ss").click(function (event){
-        window.location = "/lesson/shutter_speed"
-    })
+        $("#learn_ss").click(function (event) {
+            window.location = "/lesson/shutter_speed"
+        })
 
-    $("#learn_iso_inter").click(function (event){
-        window.location = "/lesson/interactive/iso"
-    })
-    
-    $("#learn_aper_inter").click(function (event){
-        window.location = "/lesson/interactive/aperture"
-    })
+        $("#learn_iso_inter").click(function (event) {
+            window.location = "/lesson/interactive/iso"
+        })
 
-    $("#learn_ss_inter").click(function (event){
-        window.location = "/lesson/interactive/shutter_speed"
-    })
+        $("#learn_aper_inter").click(function (event) {
+            window.location = "/lesson/interactive/aperture"
+        })
+
+        $("#learn_ss_inter").click(function (event) {
+            window.location = "/lesson/interactive/shutter_speed"
+        })
 
 
-});
+    });
 </script>
 
-<button id="learn_iso"> Learn Iso </button>
-<br>
-<button id="learn_iso_inter">Learn Iso Interactively</button>
-<br>
-<br>
-<button id="learn_aper">Learn Aperture</button>
-<br>
-<button id="learn_aper_inter">Learn Aperture Interactively</button>
-<br>
-<br>
-<button id="learn_ss">Learn Shutter Speed</button>
-<br>
-<button id="learn_ss_inter">Learn shutter Speed Interactively</button>
-<br>
-<br>
 
-<div="row">
-    <button id="quiz">Quiz Now</button>
-<button id="learn">Learn Now</button>
-</div>
+<body>
+    <div id="title">Lessons</div>
+    <button id="learn_iso"> Learn Iso </button>
+    <br>
+    <button id="learn_iso_inter">Learn Iso Interactively</button>
+    <br>
+    <br>
+    <button id="learn_aper">Learn Aperture</button>
+    <br>
+    <button id="learn_aper_inter">Learn Aperture Interactively</button>
+    <br>
+    <br>
+    <button id="learn_ss">Learn Shutter Speed</button>
+    <br>
+    <button id="learn_ss_inter">Learn shutter Speed Interactively</button>
+    <br>
+    <br>
 
+    <div="row">
+        <button id="quiz">Quiz Now</button>
+        <button id="learn">Learn Now</button>
+        </div>
+
+</body>
 {% endblock %}

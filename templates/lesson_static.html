@@ -6,21 +6,24 @@
 </head>
 
 <body>
-  <div class="row">
-    {{title}}
+  <div class="title">
+    {{title}} lesson
   </div>
   {% for d in desc %}
-  <div class="row">{{d}}</div>
+  <p class="row paragraph">&emsp;&emsp;&emsp;{{d}}</p>
   {% endfor %}
   <div class="row">
-    <div class="col-md-6">
-      {{setting1}}
-        <img class="static-img" alt="image for question" src={{image1}}> </div>
-      <div class="col-md-6">
-        {{setting2}}<img class="static-img" alt="image for question" src={{image2}}></div>
+    <div class="col-md-5">
+      <span class="setting">&emsp;{{setting1}}</span>
+      <br><img class="static-img" alt="image for question" src={{image1}}>
     </div>
-
-    <button>Next</button>
+    <div class="col-md-2"></div>
+    <div class="col-md-5">
+      <span class="setting">&emsp;{{setting2}}</span>
+      <br><img class="static-img right-align" alt="image for question" src={{image2}}>
+      <button class="button1 right-align">Next</button>
+    </div>
+  </div>
 </body>
 
 {% endblock %}
