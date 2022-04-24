@@ -96,23 +96,23 @@ quiz_questions = {
 }
 
 # {topic: [str: title, int: visit_timestamp, str[]: topic_sentences, 
-#          str[]: image_filenames, int: from_quiz_#]}
+#          str[]: image_filenames, int: from_quiz_#, str[]: image_settings]}
 static_lesson_info = {
     "iso": ["iso", -1,
             ["Let's say you are ready to take a photo.",
              "You should always assess the light by considering the weather, artificial light, and shadows.",
              "ISO helps you adjust for the light by simply allowing you to brighten or darken the photo."],
-            get_static_filenames("iso"), -1],
+            get_static_filenames("iso"), -1, ["ISO 7200", "ISO 500"]],
     "aperture": ["aperture", -1,
                  ["Aperture also known as “f-stop” controls how sharp the background is.",
                   "Now, the background of an image is defined by the focal point (what the camera is set to focus on)"],
-                 get_static_filenames("aperture"), -1],
+                 get_static_filenames("aperture"), -1, ["f / 7.3", "f / 4.0"]],
     "shutter_speed": ["shutter_speed", -1,
                       ["Shutter speed is the speed at which the shutter of the camera closes.",
                        "The longer the shutter speed, the more light strikes the sensor.",
                        "A slow shutter speed can be used to capture motion (like image on the left).",
                        "1/60 sec is the most common shutter speed for a typical photo."],
-                      get_static_filenames("shutter_speed"), -1]
+                      get_static_filenames("shutter_speed"), -1, ["1/2000 sec", "2 sec"]]
 }
 
 # {topic: [str: title, int: visit_timestamp, str[]: topic_sentences, 
@@ -158,12 +158,13 @@ def static_lesson(lesson_topic):
     info_arr[1] = time.time()  # timestamp visit
     lesson_sentences = info_arr[2]
     lesson_images = info_arr[3]
+    lesson_settings = info_arr[5]
     # copy back over info arr to dictionary
     static_lesson_info[lesson_topic] = info_arr
     print(static_lesson_info[lesson_topic])
 
     return render_template('lesson_static.html', title=lesson_title, desc=lesson_sentences, info=info_arr,
-                           image1=lesson_images[0], image2=lesson_images[1])
+                           image1=lesson_images[0], image2=lesson_images[1], setting1=lesson_settings[0], setting2=lesson_settings[1])
 
 
 # /lesson/interactive/iso
