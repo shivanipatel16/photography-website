@@ -1,4 +1,23 @@
 {% extends "layout.html" %} {% block content %}
 
-this is where the interactive lesson should be
+
+<script>
+	
+	console.log($("#slider-output"));
+
+</script>
+
+<div class="progress">
+	<div class="progress-bar" role="progressbar" style="width: 75%" aria-valuenow="50" aria-valuemin="0"
+		aria-valuemax="100"></div>
+</div>
+<button id="left">left</button>
+<button id="right">right</button>
+
+{{images}}
+<input id="slider" type="range" value="24" min="0" max="2601" step="100"
+	oninput="this.nextElementSibling.value = this.value">
+<output id="slider-output">100</output>
+
+<button id="lesson">Back to Lesson</button>
 {% endblock %}
