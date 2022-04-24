@@ -23,3 +23,16 @@
 .right-align {
     float: right;
 }
+.inter-img {
+    height: 335px;
+}
+
+#slider {
+    width: 500px;
+}
+
+#setting {
+    float:right;
+    font-size: large;
+    font-weight: 900;
+}

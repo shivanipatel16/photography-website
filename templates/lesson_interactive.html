@@ -1,10 +1,11 @@
 {% extends "layout.html" %} {% block content %}
+
 <head>
 	<link rel="stylesheet" href="{{url_for('static', filename='lesson.css')}}" />
-  </head>
+</head>
 
 <script>
-	let images = {{images|tojson}};
+	let images = {{ images| tojson}};
 </script>
 
 <script>
@@ -13,23 +14,44 @@
 		$("#setting").text(images[0][1])
 		$("#image").attr("src", images[0][0])
 
-		$("#slider").on("input change", function (){
+		$("#slider").on("input change", function () {
 			updateView()
 		});
 	});
 
-	function updateView(){
+	function updateView() {
 		let num = $("#slider-output").text();
 		$("#image").attr("src", images[num][0])
 		$("#setting").text(images[num][1])
 	}
 </script>
 
-<input id="slider" type="range" value="0" min="0" max={{num_images}} step="1" oninput="this.nextElementSibling.value = this.value">
-<output id="slider-output"></output>
-<div id="setting"></div>
-<img id="image" class="static-img" alt="image for interactive element" src="">
+<body>
+	<div class="title">
+		{{title}} interactive lesson
+	</div>
+	<div class="row">
+		<div class="col-md-4">
+		</div>
+		<div class="col-md-8">
+			<input id="slider" type="range" value="0" min="0" max={{num_images}} step="1"
+				oninput="this.nextElementSibling.value = this.value">
+			<output id="slider-output"></output>
+			<br>
+		</div>
+	</div>
 
+	<div class="row">
+		<div class="col-md-4">
+			<div id="setting"></div>
+		</div>
+		<div class="col-md-8">
+			<img id="image" class="inter-img" alt="image for interactive element" src="">
+		</div>
+	</div>
+
+</body>
 <br>
-<button id="lesson">Back to Lesson</button>
+<button id="lesson" class="button2">{{title}} Lesson</button>
+<button id="next" class="button1 right-align">Next</button>
 {% endblock %}
