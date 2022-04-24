@@ -26,8 +26,17 @@ def get_interactive_images(lesson):
         if file.startswith(lesson):
             f = "\\" + os.path.join(app.config['INTERACTIVE_PHOTOS'], file)
             setting = re.search(r'-(.*?).jpg', file).group(1)
+            if ":" in setting:
+                setting = setting.replace(":", "/", 1)
+
             filenames.append((f, setting))
-    return natsort.natsorted(filenames)
+    sorted_filenames = natsort.natsorted(filenames)
+
+    if lesson == "shutter_speed":
+        print(sorted_filenames[:5][::-1])
+        sorted_filenames = sorted_filenames[:5][::-1] + sorted_filenames[5:]
+
+    return sorted_filenames
 
 
 def get_static_filenames(lesson):
@@ -98,16 +107,16 @@ quiz_questions = {
 # {topic: [str: title, int: visit_timestamp, str[]: topic_sentences, 
 #          str[]: image_filenames, int: from_quiz_#, str[]: image_settings]}
 static_lesson_info = {
-    "iso": ["iso", -1,
+    "iso": ["Iso", -1,
             ["Let's say you are ready to take a photo.",
              "You should always assess the light by considering the weather, artificial light, and shadows.",
              "ISO helps you adjust for the light by simply allowing you to brighten or darken the photo."],
             get_static_filenames("iso"), -1, ["ISO 7200", "ISO 500"]],
-    "aperture": ["aperture", -1,
+    "aperture": ["Aperture", -1,
                  ["Aperture also known as “f-stop” controls how sharp the background is.",
                   "Now, the background of an image is defined by the focal point (what the camera is set to focus on)"],
                  get_static_filenames("aperture"), -1, ["f / 7.3", "f / 4.0"]],
-    "shutter_speed": ["shutter_speed", -1,
+    "shutter_speed": ["Shutter Speed", -1,
                       ["Shutter speed is the speed at which the shutter of the camera closes.",
                        "The longer the shutter speed, the more light strikes the sensor.",
                        "A slow shutter speed can be used to capture motion (like image on the left).",
@@ -118,9 +127,9 @@ static_lesson_info = {
 # {topic: [str: title, int: visit_timestamp, str[]: topic_sentences, 
 #          str[]: image_filenames, int: from_quiz_#]]}
 interactive_lesson_info = {
-    "iso": ["iso", -1, [], get_interactive_images("iso"), -1],
-    "aperture": ["aperture", -1, [], get_interactive_images("iso"), -1],
-    "shutter_speed": ["shutter_speed", -1, [], get_interactive_images("iso"), -1]
+    "iso": ["Iso", -1, [], get_interactive_images("iso"), -1],
+    "aperture": ["Aperture", -1, [], get_interactive_images("aperture"), -1],
+    "shutter_speed": ["Shutter Speed", -1, [], get_interactive_images("shutter_speed"), -1]
 }
 
 # {topic: [str: title, int: visit_timestamp, str[]: topic_sentences, 

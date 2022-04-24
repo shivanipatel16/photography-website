@@ -40,27 +40,40 @@
 
 
 <body>
-    <div id="title">Lessons</div>
-    <button id="learn_iso"> Learn Iso </button>
-    <br>
-    <button id="learn_iso_inter">Learn Iso Interactively</button>
-    <br>
-    <br>
-    <button id="learn_aper">Learn Aperture</button>
-    <br>
-    <button id="learn_aper_inter">Learn Aperture Interactively</button>
-    <br>
-    <br>
-    <button id="learn_ss">Learn Shutter Speed</button>
-    <br>
-    <button id="learn_ss_inter">Learn shutter Speed Interactively</button>
-    <br>
-    <br>
+    <div class="row title">Lessons</div>
+    <div class="row">
+        <div class="col-md-4">
 
-    <div="row">
-        <button id="quiz">Quiz Now</button>
-        <button id="learn">Learn Now</button>
         </div>
+        <div class="col-md-8">
+
+            <button id="learn_iso" class="lesson button2 width"> Learn Iso </button>
+            <br>
+            <button id="learn_iso_inter" class="lesson button2 width">Learn Iso Interactively</button>
+            <br>
+            <br>
+            <button id="learn_aper" class="lesson button2 width">Learn Aperture</button>
+            <br>
+            <button id="learn_aper_inter" class="lesson button2 width">Learn Aperture Interactively</button>
+            <br>
+            <br>
+            <button id="learn_ss" class="lesson button2 width">Learn Shutter Speed</button>
+            <br>
+            <button id="learn_ss_inter" class="lesson button2 width">Learn shutter Speed Interactively</button>
+            <br>
+            <br>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-10"></div>
+        <div class="col-md-2">
+            <button id="quiz" class="button1 right-align">Quiz Now</button>
+            <br>
+            <button id="learn" class="button3 right-align">Learn Now</button>
+        </div>
+    </div>
 
 </body>
 {% endblock %}

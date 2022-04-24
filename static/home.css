@@ -27,6 +27,23 @@
   border-radius: 8px;
 }
 
+.width {
+  width: auto;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.button3 {
+  color: white;
+  background-color: #e09e50;
+  width: 100px;
+  height: 45px;
+  margin: 5px;
+  text-align: center;
+  border: none;
+  border-radius: 8px;
+}
+
 .center {
   position:relative;
   left:50%;
@@ -55,4 +72,8 @@ a {
 
 .active {
   color: #8cbdb9;
+}
+
+.nocolor {
+  background-color: transparent !important;
 }
