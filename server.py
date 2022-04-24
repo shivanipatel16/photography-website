@@ -26,6 +26,7 @@ def get_interactive_filenames(lesson):
             filenames.append("\\" + os.path.join(app.config['INTERACTIVE_PHOTOS'], file))
     return natsort.natsorted(filenames)
 
+
 def get_static_filenames(lesson):
     filenames = list()
     for file in os.listdir(app.config['STATIC_PHOTOS']):
@@ -128,7 +129,6 @@ interactive_2_lesson_info = {
 }
 
 userscore = 0
-
 question_to_review = -1
 
 
@@ -180,7 +180,7 @@ def interactive_lesson(lesson_topic):
 
     # copy back over info arr to dictionary
     interactive_lesson_info[lesson_topic] = info_arr
-    return render_template('lesson_interactive.html', title=lesson_title, desc=lesson_sentences, images=lesson_images,
+    return render_template('lesson_interactive.html', title=lesson_title, desc=lesson_sentences, images=lesson_images, num_images=len(lesson_images),
                            info=info_arr)
 
 
