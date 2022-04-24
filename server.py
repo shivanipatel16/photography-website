@@ -3,6 +3,7 @@ from flask import render_template
 from flask import Response, request, jsonify
 import json
 import pprint
+import re
 import natsort
 import os
 import time
@@ -19,11 +20,13 @@ app.config['INTERACTIVE_2_PHOTOS'] = INTERACTIVE_2_PHOTOS
 app.config['QUIZ_PHOTOS'] = QUIZ_PHOTOS
 
 
-def get_interactive_filenames(lesson):
+def get_interactive_images(lesson):
     filenames = list()
     for file in os.listdir(app.config['INTERACTIVE_PHOTOS']):
         if file.startswith(lesson):
-            filenames.append("\\" + os.path.join(app.config['INTERACTIVE_PHOTOS'], file))
+            f = "\\" + os.path.join(app.config['INTERACTIVE_PHOTOS'], file)
+            setting = re.search(r'-(.*?).jpg', file).group(1)
+            filenames.append((f, setting))
     return natsort.natsorted(filenames)
 
 
@@ -115,9 +118,9 @@ static_lesson_info = {
 # {topic: [str: title, int: visit_timestamp, str[]: topic_sentences, 
 #          str[]: image_filenames, int: from_quiz_#]]}
 interactive_lesson_info = {
-    "iso": ["iso", -1, [], get_interactive_filenames("iso"), -1],
-    "aperture": ["aperture", -1, [], get_interactive_filenames("iso"), -1],
-    "shutter_speed": ["shutter_speed", -1, [], get_interactive_filenames("iso"), -1]
+    "iso": ["iso", -1, [], get_interactive_images("iso"), -1],
+    "aperture": ["aperture", -1, [], get_interactive_images("iso"), -1],
+    "shutter_speed": ["shutter_speed", -1, [], get_interactive_images("iso"), -1]
 }
 
 # {topic: [str: title, int: visit_timestamp, str[]: topic_sentences, 

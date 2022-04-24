@@ -9,24 +9,25 @@
 
 <script>
 	$(document).ready(function () {
-		// $("#slider-output").hide()
-		$("#image").attr("src", images[0])
+		$("#slider-output").hide()
+		$("#setting").text(images[0][1])
+		$("#image").attr("src", images[0][0])
 
-		$("#slider").change(function (){
-			console.log(1)
+		$("#slider").on("input change", function (){
 			updateView()
 		});
 	});
 
 	function updateView(){
 		let num = $("#slider-output").text();
-
-		$("#image").attr("src", images[num])
+		$("#image").attr("src", images[num][0])
+		$("#setting").text(images[num][1])
 	}
 </script>
 
 <input id="slider" type="range" value="0" min="0" max={{num_images}} step="1" oninput="this.nextElementSibling.value = this.value">
 <output id="slider-output"></output>
+<div id="setting"></div>
 <img id="image" class="static-img" alt="image for interactive element" src="">
 
 
