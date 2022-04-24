@@ -1,8 +1,58 @@
 .title {
-  font-weight: bold;
-  font-size: x-large;
+  text-align: center;
+  font-weight: 500;
+  font-size: xx-large;
+  color: #595959;
 }
 
-button {
+.button1 {
+  color: white;
+  background-color: #8cbdb9;
   width: 100px;
+  height: 45px;
+  margin: 5px;
+  position:relative;
+  left:50%;
+  border: none;
+  border-radius: 8px;
+}
+
+.button2 {
+  color: #595959;
+  background-color: #e8eceb;
+  width: 100px;
+  height: 45px;
+  margin: 5px;
+  text-align: center;
+  position:relative;
+  left:50%;
+  border: none;
+  border-radius: 8px;
+}
+
+.container-fluid {
+  background-color: #2d3e4e;
+}
+
+ul {
+  background-color: #2d3e4e;
+  color: white;
+}
+
+a {
+  color: white;
+}
+.navbar-brand:hover {
+  none;
+}
+
+.navbar-text {
+  color: white;
+  margin: 0px;
+}
+/* ul:hover {
+  background-color: #8cbdb9;
+} */
+.active {
+  color: #8cbdb9;
 }

@@ -7,4 +7,3 @@ $(document).ready(function () {
         window.location = "/assessment_start"
     })
 });
-s
