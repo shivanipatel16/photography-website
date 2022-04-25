@@ -14,7 +14,6 @@
 
     function update_userscore(correct_tally) {
         let data_to_add = correct_tally
-        // console.log(data_to_add)
         $.ajax({
             type: "POST",
             url: "/update_userscore",
@@ -22,7 +21,7 @@
             contentType: "application/json; charset=utf-8",
             data: JSON.stringify(data_to_add),
             success: function (result) {
-                console.log(result)
+
             },
             error: function (request, status, error) {
                 console.log("Error");
@@ -59,29 +58,21 @@
 
     $(document).ready(function () {
 
-        console.log("currq is: " + currq)
-        if (currq == 9) {
-            console.log("complete next")
-        }
 
         $('#nextbutton').click(function () {
-            url =window.location.href = "/assessment/" + nextq;
-            console.log(url)
             window.location.href = "/assessment/" + nextq;
-            if (currq == 9){
-                console.log("nextq is 9")
-                window.location.href = "/assessment_complete";
+            if (nextq == 9){
+                $('#nextbutton').click(function () { 
+                    window.location.href = "/assessment_complete";
+                 });
             }
         });
 
         $('input[name="test"]').click(function () {
             let user_ans = $(this).val();
-            // console.log("user_ans" + user_ans)
-            // console.log("correct_answer" + correct_ans)
             if (user_ans == correct_ans) {
                 let correct_tally = 1;
                 update_userscore(correct_tally);
-
             }
             else {
                 let correct_tally = 0;
@@ -90,11 +81,26 @@
             }
         });
 
+        $( "#correctexplan" ).dialog({
+            autoOpen: false, 
+        });
+
+        $("#submitbutton").click(function () { 
+            if (correct_tally == 0){
+                $( "#correctexplan" ).dialog( "open" );
+            }
+        });
+
+        $("#okbtn").click(function () { 
+            $( "#correctexplan" ).dialog( "close" );     
+        });
+
+
+
         $('#reviewbutton').click(function () {
             review_currquestion(currq);
             window.location.href = "/lesson";
         });
-
 
     });
 
@@ -119,7 +125,19 @@
 </form>
 
 
+<div id = "correctexplan"> 
+    {{data.explanation}}
+    <menu>
+        <button id="okbtn">Ok</button>
+    </menu>
+
+</div>
+
+
+<button id="submitbutton" class="btn-styled" type="button"> Submit Answer</button>
 <button id="nextbutton" class="btn-styled" type="button">Next Question</button>
-<button id="reviewbutton" class="btn-styled" type="button">Review</button>
+<button id="reviewbutton" class="btn-styled" type="button">Review </button>
+
+
 
 {% endblock %}
