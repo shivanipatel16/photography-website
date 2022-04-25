@@ -70,16 +70,17 @@ background-color: white;
     $(document).ready(function () {
 
         let correct_tally = -1;
-
+        console.log("currq: " + currq)
 
         $('#nextbutton').click(function () {
             window.location.href = "/assessment/" + nextq;
-            if (nextq == 9){
-                $('#nextbutton').click(function () { 
-                    window.location.href = "/assessment_complete";
-                 });
-            }
         });
+
+        if (currq == 9){
+            $('#nextbutton').click(function () { 
+                    window.location.href = "/assessment_complete";
+            });
+        }
 
         $('input[name="test"]').click(function () {
             let user_ans = $(this).val();
