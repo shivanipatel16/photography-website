@@ -2,10 +2,11 @@
 
 
 <style> 
-#correctexplan{ 
+.pop_up{ 
 
-width: 300px;
+width: 100px;
 border: 15px solid #8cbdb9;
+background-color: white; 
 
 }
 </style>
@@ -97,15 +98,28 @@ border: 15px solid #8cbdb9;
             autoOpen: false, 
         });
 
+        $( "#confirmation" ).dialog({
+            autoOpen: false, 
+        });
+
         $("#submitbutton").click(function () { 
             if (correct_tally == 0){
                 $( "#correctexplan" ).dialog( "open" );
             }
+            else {
+                $( "#confirmation" ).dialog( "open" );
+            }
         });
 
-        $("#okbtn").click(function () { 
+        $(".okbtn").click(function () { 
             $( "#correctexplan" ).dialog( "close" );     
         });
+
+        $(".okbtn").click(function () { 
+            $( "#confirmation" ).dialog( "close" );     
+        });
+
+
 
 
 
@@ -143,10 +157,20 @@ border: 15px solid #8cbdb9;
 <button id="nextbutton" class="btn-styled" type="button">Submit Question</button>
 <button id="reviewbutton" class="btn-styled" type="button">Review </button>
 
-<div id = "correctexplan"> 
+<div id = "correctexplan" class = "pop_up"> 
     Placeholder Text for explanation
     <menu>
-        <button id="okbtn">Ok</button>
+        <button class="okbtn">Ok</button>
+    </menu>
+
+</div>
+
+
+<div id = "confirmation" class = "pop_up"> 
+    <b>You're Correct!</b> <br>
+    Placeholder Text for explanation
+    <menu>
+        <button class="okbtn">Ok</button>
     </menu>
 
 </div>
