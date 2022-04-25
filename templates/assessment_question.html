@@ -1,8 +1,15 @@
 {% extends "layout.html" %} {% block content %}
- 
-<head> 
-<link rel="stylesheet" href="{{url_for('static', filename='assessment_question.css')}}" />
-</head>
+
+
+<style> 
+#correctexplan{ 
+
+width: 300px;
+border: 15px solid #8cbdb9;
+
+}
+</style>
+
 
 <script>
     let data = {{ data| tojson}}
@@ -132,8 +139,8 @@
 
 
 
-<button id="submitbutton" class="btn-styled" type="button"> Submit Answer</button>
-<button id="nextbutton" class="btn-styled" type="button">Next Question</button>
+<button id="submitbutton" class="btn-styled" type="button"> Check Answer</button>
+<button id="nextbutton" class="btn-styled" type="button">Submit Question</button>
 <button id="reviewbutton" class="btn-styled" type="button">Review </button>
 
 <div id = "correctexplan"> 
