@@ -1,5 +1,8 @@
 {% extends "layout.html" %} {% block content %}
-
+ 
+<head> 
+<link rel="stylesheet" href="{{url_for('static', filename='assessment_question.css')}}" />
+</head>
 
 <script>
     let data = {{ data| tojson}}
@@ -58,6 +61,8 @@
 
     $(document).ready(function () {
 
+        let correct_tally = -1;
+
 
         $('#nextbutton').click(function () {
             window.location.href = "/assessment/" + nextq;
@@ -71,11 +76,11 @@
         $('input[name="test"]').click(function () {
             let user_ans = $(this).val();
             if (user_ans == correct_ans) {
-                let correct_tally = 1;
+                correct_tally = 1;
                 update_userscore(correct_tally);
             }
             else {
-                let correct_tally = 0;
+                correct_tally = 0;
                 update_userscore(correct_tally);
 
             }
@@ -125,18 +130,19 @@
 </form>
 
 
-<div id = "correctexplan"> 
-    {{data.explanation}}
-    <menu>
-        <button id="okbtn">Ok</button>
-    </menu>
-
-</div>
 
 
 <button id="submitbutton" class="btn-styled" type="button"> Submit Answer</button>
 <button id="nextbutton" class="btn-styled" type="button">Next Question</button>
 <button id="reviewbutton" class="btn-styled" type="button">Review </button>
+
+<div id = "correctexplan"> 
+    Placeholder Text for explanation
+    <menu>
+        <button id="okbtn">Ok</button>
+    </menu>
+
+</div>
 
 
 
