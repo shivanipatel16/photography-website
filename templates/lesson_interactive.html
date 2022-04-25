@@ -17,6 +17,14 @@
 		$("#slider").on("input change", function () {
 			updateView()
 		});
+
+		$('#next').click(function () {
+            window.location.href = "/lesson";
+        });
+
+		$('#lesson').click(function () {
+            window.location.href = "/lesson/{{lesson_topic}}";
+        });
 	});
 
 	function updateView() {

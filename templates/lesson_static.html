@@ -5,6 +5,14 @@
   <script type="text/javascript" src="{{ url_for('static', filename='home.js') }}"></script>
 </head>
 
+<script>
+	$(document).ready(function () {
+		$('#next').click(function () {
+            window.location.href = "/lesson/interactive/{{lesson_topic}}";
+        });
+	});
+</script>
+
 <body>
   <div class="title">
     {{title}} lesson
@@ -22,7 +30,7 @@
       <span class="setting">&emsp;{{setting2}}</span>
       <br><img class="static-img right-align" alt="image for question" src={{image2}}>
       <br>
-      <button class="button3 right-align">Next</button>
+      <button id="next" class="button3 right-align">Next</button>
     </div>
   </div>
 </body>
