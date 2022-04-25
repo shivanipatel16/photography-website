@@ -164,6 +164,7 @@ def static_lesson(lesson_topic):
 
     info_arr = static_lesson_info[lesson_topic]
     lesson_title = info_arr[0]
+    lesson_topic = lesson_topic
     info_arr[1] = time.time()  # timestamp visit
     lesson_sentences = info_arr[2]
     lesson_images = info_arr[3]
@@ -172,7 +173,7 @@ def static_lesson(lesson_topic):
     static_lesson_info[lesson_topic] = info_arr
     print(static_lesson_info[lesson_topic])
 
-    return render_template('lesson_static.html', title=lesson_title, desc=lesson_sentences, info=info_arr,
+    return render_template('lesson_static.html', title=lesson_title, lesson_topic=lesson_topic, desc=lesson_sentences, info=info_arr,
                            image1=lesson_images[0], image2=lesson_images[1], setting1=lesson_settings[0], setting2=lesson_settings[1])
 
 
@@ -187,14 +188,15 @@ def interactive_lesson(lesson_topic):
     info_arr = interactive_lesson_info[lesson_topic]
     print(info_arr)
     lesson_title = info_arr[0]
+    lesson_topic = lesson_topic
     info_arr[1] = time.time()  # timestamp visit
     lesson_sentences = info_arr[2]
     lesson_images = info_arr[3]
 
     # copy back over info arr to dictionary
     interactive_lesson_info[lesson_topic] = info_arr
-    return render_template('lesson_interactive.html', title=lesson_title, desc=lesson_sentences, images=lesson_images, num_images=len(lesson_images),
-                           info=info_arr)
+    return render_template('lesson_interactive.html', title=lesson_title, lesson_topic=lesson_topic, desc=lesson_sentences, 
+                            images=lesson_images, num_images=len(lesson_images), info=info_arr)
 
 
 # /lesson/interactive/iso/aperture
@@ -231,7 +233,7 @@ def assessment_question(question):
 
     info_arr = quiz_questions[question]
     text = info_arr[0]
-    [choice1, choice2, choice3, choice4] = info_arr[1]
+    [choice0, choice1, choice2, choice3] = info_arr[1]
     currentqnumber = question
     nextqnumber = str(int(question) + 1)
     correct_ans = info_arr[3]
@@ -242,10 +244,10 @@ def assessment_question(question):
         "currentqnumber": currentqnumber,
         "correctanswer": correct_ans,
         "text": text,
+        "choice0": choice0,
         "choice1": choice1,
         "choice2": choice2,
         "choice3": choice3,
-        "choice4": choice4,
         "image": image
     }
     return render_template('assessment_question.html', data=data)
