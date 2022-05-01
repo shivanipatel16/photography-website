@@ -13,21 +13,27 @@
 
         if (iso_visit > 0) {
             $("#learn_iso_inter").prop("disabled", false)
+            $("#learn_iso_inter").css({color: 'default'})
         }
         else {
             $("#learn_iso_inter").prop("disabled", true)
+            $("#learn_iso_inter").css({color: 'lightgrey'})
         }
         if (ape_visit > 0) {
             $("#learn_aper_inter").prop("disabled", false)
+            $("#learn_aper_inter").css({color: 'default'})
         }
         else {
             $("#learn_aper_inter").prop("disabled", true)
+            $("#learn_aper_inter").css({color: 'lightgrey'})
         }
         if (spd_visit > 0) {
             $("#learn_ss_inter").prop("disabled", false)
+            $("#learn_ss_inter").css({color: 'default'})
         }
         else {
             $("#learn_ss_inter").prop("disabled", true)
+            $("#learn_ss_inter").css({color: 'lightgrey'})
         }
 
         $("#quiz").click(function (event) {
