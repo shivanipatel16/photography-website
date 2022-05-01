@@ -260,7 +260,7 @@ def interactive_lesson_2(lesson_topic1, lesson_topic2):
 
 @app.route('/assessment_start')
 def assessment_start():
-    return render_template('assessment_start.html')
+    return render_template('assessment_start.html', question_to_review=question_to_review)
 
 
 @app.route('/assessment/<question>')
