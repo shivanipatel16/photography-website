@@ -37,7 +37,6 @@ def get_interactive_images(lesson):
     sorted_filenames = natsort.natsorted(filenames)
 
     if lesson == "shutter_speed":
-        print(sorted_filenames[:5][::-1])
         sorted_filenames = sorted_filenames[:5][::-1] + sorted_filenames[5:]
 
     return sorted_filenames
@@ -66,7 +65,7 @@ quiz_questions = {
            "Increase the aperture and increase the ISO."],
           "", 
           "0", 
-          "placeholder explanation", # quiz_questions[4] str: explanation
+          "placeholder explanation placeholder explanation placeholder explanation placeholder explanation placeholder explanation", # quiz_questions[4] str: explanation
           "", -1],
     "2": ["Which options will help decrease the brightness of an image the most?",
           ["Increase the ISO level, make the shutter speed faster, increase the aperture",

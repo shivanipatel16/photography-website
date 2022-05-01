@@ -1,32 +1,21 @@
 {% extends "layout.html" %} {% block content %}
+
 <head>
     <link rel="stylesheet" href="{{url_for('static', filename='assessment.css')}}" />
-    <script type="text/javascript" src="{{ url_for('static', filename='home.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='assessment_start.js') }}"></script>
 </head>
 
-<script> 
-    $(document).ready(function () { 
-        currq = parseInt({{question_to_review}})
-        console.log(currq)
-        
-        $('#startbutton').click(function () { 
-            if (currq > 0) {
-                window.location.href = `/assessment/${currq}`; 
-            }
-            else {
-                window.location.href = "/assessment/1"; 
-            }
-        });
-    });
-</script> 
+<script>
+     currq = parseInt({{ question_to_review }})
+</script>
 
 <body>
     <div class="title">
-      Ready to Start the Quiz?
+        Ready to Start the Quiz?
     </div>
     <br><br>
-        <button class="button1 center" id="startbutton">Start Quiz</button>
-  
-  </body>
+    <button class="button1 center" id="startbutton">Start Quiz</button>
+
+</body>
 
 {% endblock %}

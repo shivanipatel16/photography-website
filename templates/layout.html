@@ -1,37 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <title>Bootstrap Example</title>
+  <title>Photography</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>  
+  <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="{{url_for('static', filename='home.css')}}" />
 
 </head>
+
 <body>
 
-<nav class="navbar">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand">How To Take a DSLR Photo</a>
+  <nav class="navbar">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand">How To Take a DSLR Photo</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/">Home</a></li>
+        <li><a href="/lesson">Lessons</a></li>
+        <li><a href="/assessment_start">Assessment</a></li>
+      </ul>
     </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="/">Home</a></li>
-      <li><a href="/lesson">Lessons</a></li>
-      <li><a href="/assessment_start">Assessment</a></li>
-    </ul>
+  </nav>
+
+  <div class="container">
+    {% block content %}
+    {% endblock %}
   </div>
-</nav>
 
-<div class="container">
-      {% block content %}
-      {% endblock %}
-</div>
-
-<div> </div>
+  <div> </div>
 
 </body>
-</html> 
+
+</html>
