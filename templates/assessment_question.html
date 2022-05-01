@@ -73,12 +73,23 @@ background-color: white;
         console.log("currq: " + currq)
 
         $('#nextbutton').click(function () {
-            window.location.href = "/assessment/" + nextq;
+            if (correct_tally == -1){
+                console.log("nothing selected")
+            }
+            else {
+                window.location.href = "/assessment/" + nextq;
+            }
         });
 
         if (currq == 9){
             $('#nextbutton').click(function () { 
+                if (correct_tally == -1)
+                {
+                    console.log("nothing selected")
+                }
+                else {
                     window.location.href = "/assessment_complete";
+                }
             });
         }
 
@@ -107,7 +118,7 @@ background-color: white;
             if (correct_tally == 0){
                 $( "#correctexplan" ).dialog( "open" );
             }
-            else {
+            else if (correct_tally == 1){
                 $( "#confirmation" ).dialog( "open" );
             }
         });
