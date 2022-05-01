@@ -63,7 +63,7 @@ quiz_questions = {
            "Decrease the ISO level, make the shutter speed faster, increase the aperture"],
           "", "3", "", "", -1],  # TODO: convert this question to multiple choice
     "3": ["Why is this image blurry?",
-          ["Exposure", "Shutter speed", "ISO", "Aperture"],
+          ["Exposure", "Shutter Speed", "ISO", "Aperture"],
           "", "1", "", "", -1],
     "4": [
         "Rhonda took this image on the left with the settings, and she was hoping to retake it to look more like the image on the right. What can Rhonda change to get her desired photograph?",
