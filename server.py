@@ -8,18 +8,22 @@ import natsort
 import os
 import time
 
+app = Flask(__name__)
+
+# Server configuration
+
+## Configure server filepaths
 STATIC_PHOTOS = os.path.join('static', 'static_photos')
 INTERACTIVE_PHOTOS = os.path.join('static', 'interactive_photos')
 INTERACTIVE_2_PHOTOS = os.path.join('static', 'interactive_2_photos')
 QUIZ_PHOTOS = os.path.join('static', 'quiz_photos')
 
-app = Flask(__name__)
 app.config['STATIC_PHOTOS'] = STATIC_PHOTOS
 app.config['INTERACTIVE_PHOTOS'] = INTERACTIVE_PHOTOS
 app.config['INTERACTIVE_2_PHOTOS'] = INTERACTIVE_2_PHOTOS
 app.config['QUIZ_PHOTOS'] = QUIZ_PHOTOS
 
-
+## Helper functions to retrieve image filepaths
 def get_interactive_images(lesson):
     filenames = list()
     for file in os.listdir(app.config['INTERACTIVE_PHOTOS']):
@@ -46,6 +50,11 @@ def get_static_filenames(lesson):
             filenames.append("\\" + os.path.join(app.config['STATIC_PHOTOS'], file))
     return natsort.natsorted(filenames)
 
+
+# Server Data
+## Global Variables
+userscore = 0
+question_to_review = -1
 
 # {quiz#: [str: quiz_question, str[]: quiz_options, str: user_answer,
 #          str: answer, str: explanation, str: image_filename int: correct_bool]}
@@ -140,10 +149,6 @@ interactive_2_lesson_info = {
     "aperture-shutter_speed": ["aperture-shutter_speed", -1, [], [], -1]
 }
 
-userscore = 0
-question_to_review = -1
-
-
 @app.route('/')
 def welcome():
     return render_template('home.html')
@@ -154,7 +159,8 @@ def lesson():
     iso_visit = static_lesson_info["iso"][1]
     spd_visit = static_lesson_info["shutter_speed"][1]
     ape_visit = static_lesson_info["aperture"][1]
-    return render_template('lesson.html', iso_visit=iso_visit, spd_visit=spd_visit, ape_visit=ape_visit)
+    return render_template('lesson.html', iso_visit=iso_visit, spd_visit=spd_visit, 
+                            ape_visit=ape_visit, question_to_review=question_to_review)
 
 
 # /lesson/iso
@@ -271,11 +277,12 @@ def update_userscore(correct_tally=None):
 
 
 @app.route('/review_currquestion', methods=['GET', 'POST'])
-def review_currquestion(currq):
+def review_currquestion():
     global question_to_review
 
     json_data = request.get_json()
     question_to_review = int(json_data)
+    print(question_to_review)
 
     return jsonify(question_to_review=question_to_review)
 
