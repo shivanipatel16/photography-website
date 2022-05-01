@@ -151,7 +151,10 @@ def welcome():
 
 @app.route('/lesson')
 def lesson():
-    return render_template('lesson.html')
+    iso_visit = static_lesson_info["iso"][1]
+    spd_visit = static_lesson_info["shutter_speed"][1]
+    ape_visit = static_lesson_info["aperture"][1]
+    return render_template('lesson.html', iso_visit=iso_visit, spd_visit=spd_visit, ape_visit=ape_visit)
 
 
 # /lesson/iso
@@ -185,6 +188,7 @@ def interactive_lesson(lesson_topic):
     if lesson_topic not in ("iso", "aperture", "shutter_speed"):
         return render_template('home.html')
 
+    print(static_lesson_info[lesson_topic][1]) # timestamp
     info_arr = interactive_lesson_info[lesson_topic]
     print(info_arr)
     lesson_title = info_arr[0]

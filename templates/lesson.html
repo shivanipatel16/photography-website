@@ -6,6 +6,29 @@
 
 <script>
     $(document).ready(function () {
+        let iso_visit = parseInt({{iso_visit}})
+        let spd_visit = parseInt({{spd_visit}})
+        let ape_visit = parseInt({{ape_visit}})
+
+        if (iso_visit > 0) {
+            $("#learn_iso_inter").prop("disabled", false)
+        }
+        else {
+            $("#learn_iso_inter").prop("disabled", true)
+        }
+        if (ape_visit > 0) {
+            $("#learn_aper_inter").prop("disabled", false)
+        }
+        else {
+            $("#learn_aper_inter").prop("disabled", true)
+        }
+        if (spd_visit > 0) {
+            $("#learn_ss_inter").prop("disabled", false)
+        }
+        else {
+            $("#learn_ss_inter").prop("disabled", true)
+        }
+
         $("#quiz").click(function (event) {
             window.location = "/assessment_start"
         })
