@@ -26,8 +26,8 @@ def get_interactive_images(lesson):
         if file.startswith(lesson):
             f = "\\" + os.path.join(app.config['INTERACTIVE_PHOTOS'], file)
             setting = re.search(r'-(.*?).jpg', file).group(1)
-            if ":" in setting:
-                setting = setting.replace(":", "/", 1)
+            if "~" in setting:
+                setting = setting.replace("~", "/", 1)
 
             filenames.append((f, setting))
     sorted_filenames = natsort.natsorted(filenames)
