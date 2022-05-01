@@ -9,6 +9,7 @@
         let iso_visit = parseInt({{iso_visit}})
         let spd_visit = parseInt({{spd_visit}})
         let ape_visit = parseInt({{ape_visit}})
+        let currq = parseInt({{question_to_review}})
 
         if (iso_visit > 0) {
             $("#learn_iso_inter").prop("disabled", false)
@@ -30,7 +31,12 @@
         }
 
         $("#quiz").click(function (event) {
-            window.location = "/assessment_start"
+            if (currq > 0) {
+                window.location = "/assessment/{{question_to_review}}"
+            }
+            else {
+                window.location = "/assessment_start"
+            }
         })
 
         $("#learn_iso").click(function (event) {
