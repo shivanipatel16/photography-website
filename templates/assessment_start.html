@@ -6,8 +6,16 @@
 
 <script> 
     $(document).ready(function () { 
+        currq = parseInt({{question_to_review}})
+        console.log(currq)
+        
         $('#startbutton').click(function () { 
-            window.location.href = "/assessment/1"; 
+            if (currq > 0) {
+                window.location.href = `/assessment/${currq}`; 
+            }
+            else {
+                window.location.href = "/assessment/1"; 
+            }
         });
     });
 </script> 
