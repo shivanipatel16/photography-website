@@ -3,12 +3,22 @@
 
 <style> 
 .pop_up{ 
-
 width: 100px;
-border: 15px solid #8cbdb9;
 background-color: white; 
-
+border-radius: 20px;
+position: absolute;
+top: 200px;
+left: 10px !important;
+border: 10px solid #8cbdb9;
+padding: 10px;
 }
+
+.wrong{
+    border: 15px solid #e09e50 !important;  
+}
+
+
+
 </style>
 
 
@@ -104,6 +114,7 @@ background-color: white;
                 update_userscore(correct_tally);
 
             }
+            $( ".pop_up" ).dialog( "close" ); 
         });
 
         $( "#correctexplan" ).dialog({
@@ -169,20 +180,21 @@ background-color: white;
 <button id="nextbutton" class="btn-styled" type="button">Submit Question</button>
 <button id="reviewbutton" class="btn-styled" type="button">Review </button>
 
-<div id = "correctexplan" class = "pop_up"> 
-    Placeholder Text for explanation
+<div id = "correctexplan" class = "pop_up wrong ">
+    <b>Not quite!</b> <br> 
+    {{data.explantion_text}}
     <menu>
-        <button class="okbtn">Ok</button>
+        <button class="okbtn button2">Ok</button>
     </menu>
 
 </div>
 
 
-<div id = "confirmation" class = "pop_up"> 
+<div id = "confirmation" class = "pop_up "> 
     <b>You're Correct!</b> <br>
-    Placeholder Text for explanation
+    {{data.explantion_text}}
     <menu>
-        <button class="okbtn">Ok</button>
+        <button class="okbtn button2">Ok</button>
     </menu>
 
 </div>
