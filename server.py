@@ -64,53 +64,80 @@ quiz_questions = {
            "Lower the aperture and make the shutter speed faster.",
            "Lower the ISO.",
            "Increase the aperture and increase the ISO."],
-          "", "0", "", "", -1],
+          "", 
+          "0", 
+          "placeholder explanation", # quiz_questions[4] str: explanation
+          "", -1],
     "2": ["Which options will help decrease the brightness of an image the most?",
           ["Increase the ISO level, make the shutter speed faster, increase the aperture",
            "Decrease the ISO level, make the shutter speed slower, decrease the aperture",
            "Increase the ISO level, make the shutter speed faster, decrease the aperture",
            "Decrease the ISO level, make the shutter speed faster, increase the aperture"],
-          "", "3", "", "", -1],  # TODO: convert this question to multiple choice
+          "",
+          "3", 
+          "placeholder explanation", # quiz_questions[4] str: explanation 
+          "", -1], 
     "3": ["Why is this image blurry?",
           ["Exposure", "Shutter Speed", "ISO", "Aperture"],
-          "", "1", "", "", -1],
+          "", 
+          "1", 
+          "placeholder explanation", # quiz_questions[4] str: explanation 
+          "", -1],
     "4": [
         "Rhonda took this image on the left with the settings, and she was hoping to retake it to look more like the image on the right. What can Rhonda change to get her desired photograph?",
         ["Lower the aperture", "Zoom in on the flower",
          "Increase the ISO", "Make the shutter speed faster"],
-        "", "0", "", "", -1],
+        "", 
+        "0", 
+        "placeholder explanation", # quiz_questions[4] str: explanation 
+        "", -1],
     "5": [
         "This couple wants to take their engagement portrait outdoors. What do they have to account for in this setting?",
         ["Bright outdoor light, and focus on subjects’ faces",
          "Background clarity and details",
          "Subject motion",
          "Nothing"],
-        "", "0", "", "", -1],
+        "", 
+        "0", 
+        "placeholder explanation", # quiz_questions[4] str: explanation 
+        "", -1],
     "6": [
         "The photographer has decided to adjust for sunny, bright  outdoor lighting. What settings should be adjusted to account for those conditions?",
         ["Fast shutter speed + low ISO",
          "Slow shutter speed + low ISO",
          "Slow shutter speed + high ISO",
          "Fast shutter speed + high ISO"],
-        "", "0", "", "", -1],
+        "", 
+        "0", 
+        "placeholder explanation", # quiz_questions[4] str: explanation 
+        "", -1],
     "7": ["What camera settings did the photographer use to take this picture?",
           ["Fast shutter speed + low ISO",
            "Slow shutter speed + low ISO",
            "Slow shutter speed + high ISO",
            "Fast shutter speed + high ISO"],
-          "", "1", "", "", -1],
+          "", 
+          "1", 
+          "placeholder explanation", # quiz_questions[4] str: explanation 
+          "", -1],
     "8": ["What setting was changed in the second photo, and what was the effect?",
           ["Aperture; background became more detailed",
            "ISO, background became brighter",
            "Shutter speed; background became more detailed",
            "Nothing"],
-          "", "0", "", "", -1],
+          "", 
+          "0", 
+          "placeholder explanation", # quiz_questions[4] str: explanation 
+          "", -1],
     "9": ["What should be done to put the Capitol Building in focus?",
           ["Increase ISO",
            "Lower the aperture",
            "Increase the aperture and move the focal point",
            "Increase the shutter speed"],
-          "", "2", "", "", -1],
+          "", 
+          "2", 
+          "placeholder explanation", # quiz_questions[4] str: explanation 
+          "", -1],
 }
 
 # {topic: [str: title, int: visit_timestamp, str[]: topic_sentences, 
@@ -247,6 +274,7 @@ def assessment_question(question):
     currentqnumber = question
     nextqnumber = str(int(question) + 1)
     correct_ans = info_arr[3]
+    explanation_text = info_arr[4]
     image = "\\" + os.path.join(app.config['QUIZ_PHOTOS'], f"{question}.jpg")
     print(image)
     data = {
@@ -258,7 +286,8 @@ def assessment_question(question):
         "choice1": choice1,
         "choice2": choice2,
         "choice3": choice3,
-        "image": image
+        "image": image,
+        "explanation_text": explanation_text
     }
     return render_template('assessment_question.html', data=data)
 
