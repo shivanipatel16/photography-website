@@ -1,7 +1,15 @@
 {% extends "layout.html" %} {% block content %}
 
+<head>
+    <!-- <link rel="stylesheet" href="{{url_for('static', filename='assessment.css')}}" /> -->
+    <script type="text/javascript" src="{{ url_for('static', filename='assessment_complete.js') }}"></script>
+</head>
+
 <body>
-    <div class=header> Congratulations! your score is: {{userscore}} out of 9! </div>
+    <br> <br>
+    <div class="title small">You got {{userscore}} out of 9 questions correct.</div>
+    <br> <br>
+    <button id="quiz" class="button1 center">Try Again?</button>
 </body>
 
 {% endblock %}

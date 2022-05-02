@@ -297,9 +297,9 @@ def update_userscore(correct_tally=None):
 
     json_data = request.get_json()
     score_tally = int(json_data)
-    # print(json_data)
+    print(json_data)
     userscore = userscore + score_tally
-    # print(f"userscore: {userscore}/{9}")
+    print(f"userscore: {userscore}/{9}")
 
     return jsonify(userscore=userscore)
 
@@ -317,7 +317,14 @@ def review_currquestion():
 
 @app.route('/assessment_complete')
 def assessment_complete():
-    return render_template('assessment_complete.html', userscore=userscore)
+    global userscore
+    global question_to_review
+
+    score = userscore
+    userscore = 0 # reset stored userscore
+    question_to_review = -1
+
+    return render_template('assessment_complete.html', userscore=score)
 
 
 if __name__ == '__main__':

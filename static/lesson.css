@@ -42,8 +42,8 @@
 .hover:hover {
     color: white;
     background-color: #e09e50;
-}
+}x
 
 .small {
-    font-size: medium;
+    font-size: medium !important;
 }
