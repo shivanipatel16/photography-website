@@ -154,7 +154,7 @@ static_lesson_info = {
     "shutter_speed": ["Shutter Speed", -1,
                       ["Shutter speed is the speed at which the shutter of the camera closes.",
                        "The longer the shutter speed, the more light strikes the sensor.",
-                       "A slow shutter speed can be used to capture motion (like image on the left).",
+                       "A slow shutter speed can be used to capture motion (like image on the right).",
                        "1/60 sec is the most common shutter speed for a typical photo."],
                       get_static_filenames("shutter_speed"), -1, ["1/2000 sec", "2 sec"]]
 }

@@ -12,7 +12,7 @@ $(document).ready(function () {
   });
 
   $("#lesson").click(function () {
-    window.location.href = "/lesson/{{lesson_topic}}";
+    window.location.href = "/lesson/" + lesson_topic;
   });
 });
 
