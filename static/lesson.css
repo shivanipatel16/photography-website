@@ -20,9 +20,11 @@
     font-size: large;
     font-weight: 900;
 }
+
 .right-align {
     float: right;
 }
+
 .inter-img {
     height: 335px;
 }
@@ -35,4 +37,13 @@
     float:right;
     font-size: large;
     font-weight: 900;
+}
+
+.hover:hover {
+    color: white;
+    background-color: #e09e50;
+}
+
+.small {
+    font-size: medium;
 }

@@ -1,7 +1,7 @@
 {% extends "layout.html" %} {% block content %}
 
 <head>
-
+    <link rel="stylesheet" href="{{url_for('static', filename='lesson.css')}}" />
     <script type="text/javascript" src="{{ url_for('static', filename='lesson.js') }}"></script>
 </head>
 
@@ -14,25 +14,26 @@
 
 <body>
     <div class="row title">Lessons</div>
+
     <div class="row">
+        <div id="quiz-finished" class="title small"></div>
         <div class="col-md-4">
 
         </div>
         <div class="col-md-8">
-
-            <button id="learn_iso" class="lesson button2 width"> Learn Iso </button>
+            <button id="learn_iso" class="lesson button2a width hover"> Learn Iso </button>
             <br>
-            <button id="learn_iso_inter" class="lesson button2 width">Learn Iso Interactively</button>
-            <br>
-            <br>
-            <button id="learn_aper" class="lesson button2 width">Learn Aperture</button>
-            <br>
-            <button id="learn_aper_inter" class="lesson button2 width">Learn Aperture Interactively</button>
+            <button id="learn_iso_inter" class="lesson button2a width">Learn Iso Interactively</button>
             <br>
             <br>
-            <button id="learn_ss" class="lesson button2 width">Learn Shutter Speed</button>
+            <button id="learn_aper" class="lesson button2a width hover">Learn Aperture</button>
             <br>
-            <button id="learn_ss_inter" class="lesson button2 width">Learn Shutter Speed Interactively</button>
+            <button id="learn_aper_inter" class="lesson button2a width">Learn Aperture Interactively</button>
+            <br>
+            <br>
+            <button id="learn_ss" class="lesson button2a width hover">Learn Shutter Speed</button>
+            <br>
+            <button id="learn_ss_inter" class="lesson button2a width">Learn Shutter Speed Interactively</button>
             <br>
             <br>
         </div>
