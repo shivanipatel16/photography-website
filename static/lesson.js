@@ -34,7 +34,7 @@ $(document).ready(function () {
 
     $("#quiz").click(function (event) {
         if (currq > 0) {
-            window.location = "/assessment/{{question_to_review}}"
+            window.location = `/assessment/${currq}`
         }
         else {
             window.location = "/assessment_start"
