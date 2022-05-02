@@ -31,6 +31,17 @@
   border-radius: 8px;
 }
 
+.button2a {
+  color: #595959;
+  background-color: #e8eceb;
+  width: 100px;
+  height: 45px;
+  margin: 5px;
+  text-align: center;
+  border: none;
+  border-radius: 8px;
+}
+
 .button2:hover {
   background-color: #2d3e4e;
   color: white;

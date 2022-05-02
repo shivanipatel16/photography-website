@@ -2,15 +2,11 @@
 
 <head>
   <link rel="stylesheet" href="{{url_for('static', filename='lesson.css')}}" />
-  <script type="text/javascript" src="{{ url_for('static', filename='home.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='lesson_static.js') }}"></script>
 </head>
 
 <script>
-	$(document).ready(function () {
-		$('#next').click(function () {
-            window.location.href = "/lesson/interactive/{{lesson_topic}}";
-        });
-	});
+  let lesson_topic = {{lesson_topic | tojson}}
 </script>
 
 <body>
@@ -30,7 +26,7 @@
       <span class="setting">&emsp;{{setting2}}</span>
       <br><img class="static-img right-align" alt="image for question" src={{image2}}>
       <br>
-      <button id="next" class="button3 right-align">Next</button>
+      <button id="nextlesson" class="button3 right-align">Next</button>
     </div>
   </div>
 </body>

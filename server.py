@@ -37,7 +37,6 @@ def get_interactive_images(lesson):
     sorted_filenames = natsort.natsorted(filenames)
 
     if lesson == "shutter_speed":
-        print(sorted_filenames[:5][::-1])
         sorted_filenames = sorted_filenames[:5][::-1] + sorted_filenames[5:]
 
     return sorted_filenames
@@ -66,7 +65,7 @@ quiz_questions = {
            "Increase the aperture and increase the ISO."],
           "", 
           "0", 
-          "placeholder explanation", # quiz_questions[4] str: explanation
+          "Noise occurs when the ISO is too high. In order to compensate a lower ISO, you must allow the image to become brighter either by making the shutter speed slower or lowering the aperture.", # quiz_questions[4] str: explanation
           "", -1],
     "2": ["Which options will help decrease the brightness of an image the most?",
           ["Increase the ISO level, make the shutter speed faster, increase the aperture",
@@ -75,13 +74,13 @@ quiz_questions = {
            "Decrease the ISO level, make the shutter speed faster, increase the aperture"],
           "",
           "3", 
-          "placeholder explanation", # quiz_questions[4] str: explanation 
+          "The higher the ISO, the brighter the image. The slower the shutter speed, the more light that the camera lets in. The lower the aperture, the brighter the background.", # quiz_questions[4] str: explanation 
           "", -1], 
     "3": ["Why is this image blurry?",
           ["Exposure", "Shutter Speed", "ISO", "Aperture"],
           "", 
           "1", 
-          "placeholder explanation", # quiz_questions[4] str: explanation 
+          "This image is blurry because the shutter speed was so slow that the image captured the movement of the person holding the camera.", # quiz_questions[4] str: explanation 
           "", -1],
     "4": [
         "Rhonda took this image on the left with the settings, and she was hoping to retake it to look more like the image on the right. What can Rhonda change to get her desired photograph?",
@@ -89,7 +88,7 @@ quiz_questions = {
          "Increase the ISO", "Make the shutter speed faster"],
         "", 
         "0", 
-        "placeholder explanation", # quiz_questions[4] str: explanation 
+        "The difference between the two images is the background blur. In order lower the clarity on the background, the aperture should be lowered.", # quiz_questions[4] str: explanation 
         "", -1],
     "5": [
         "This couple wants to take their engagement portrait outdoors. What do they have to account for in this setting?",
@@ -99,17 +98,17 @@ quiz_questions = {
          "Nothing"],
         "", 
         "0", 
-        "placeholder explanation", # quiz_questions[4] str: explanation 
+        "In order to put lots of emphasis on the couple, we must make sure the focus is on their faces. Furthermore, the lighting conditions affect the settings of the images greatly since sunny lighting is already very bright.", # quiz_questions[4] str: explanation 
         "", -1],
     "6": [
-        "The photographer has decided to adjust for sunny, bright  outdoor lighting. What settings should be adjusted to account for those conditions?",
+        "The photographer has decided to adjust for sunny, bright outdoor lighting. What settings should be adjusted to account for those conditions?",
         ["Fast shutter speed + low ISO",
          "Slow shutter speed + low ISO",
          "Slow shutter speed + high ISO",
          "Fast shutter speed + high ISO"],
         "", 
         "0", 
-        "placeholder explanation", # quiz_questions[4] str: explanation 
+        "In order to account for bright outdoor lighting, you must have a low ISO. A fast shutter speed means less light enters the camera, which means the photo will not be overly bright.", # quiz_questions[4] str: explanation 
         "", -1],
     "7": ["What camera settings did the photographer use to take this picture?",
           ["Fast shutter speed + low ISO",
@@ -118,7 +117,7 @@ quiz_questions = {
            "Fast shutter speed + high ISO"],
           "", 
           "1", 
-          "placeholder explanation", # quiz_questions[4] str: explanation 
+          "In order to capture the light trails, the shutter speed must be very slow (30 seconds). Because of such a slow shutter speed, the ISO must be very low so that the photo is not overly bright.", # quiz_questions[4] str: explanation 
           "", -1],
     "8": ["What setting was changed in the second photo, and what was the effect?",
           ["Aperture; background became more detailed",
@@ -127,16 +126,16 @@ quiz_questions = {
            "Nothing"],
           "", 
           "0", 
-          "placeholder explanation", # quiz_questions[4] str: explanation 
+          "The background became more details and in focus which is controlled by aperture. A higher aperture (f-stop) increases the focus on the background details of an image.", # quiz_questions[4] str: explanation 
           "", -1],
     "9": ["What should be done to put the Capitol Building in focus?",
           ["Increase ISO",
            "Lower the aperture",
-           "Increase the aperture and move the focal point",
+           "Increase the aperture or move the focal point",
            "Increase the shutter speed"],
           "", 
           "2", 
-          "placeholder explanation", # quiz_questions[4] str: explanation 
+          "Remember that background clarity is controlled by aperture. Furthermore, moving the focal point of the image can put the building in the foreground instead of the background.", # quiz_questions[4] str: explanation 
           "", -1],
 }
 
@@ -146,7 +145,7 @@ static_lesson_info = {
     "iso": ["Iso", -1,
             ["Let's say you are ready to take a photo.",
              "You should always assess the light by considering the weather, artificial light, and shadows.",
-             "ISO helps you adjust for the light by simply allowing you to brighten or darken the photo."],
+             "ISO helps you adjust for the light by simply allowing you to brighten or darken the photo.", "If the ISO is too high, then there will be noise in the photo."],
             get_static_filenames("iso"), -1, ["ISO 7200", "ISO 500"]],
     "aperture": ["Aperture", -1,
                  ["Aperture also known as “f-stop” controls how sharp the background is.",

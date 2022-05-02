@@ -1,100 +1,39 @@
 {% extends "layout.html" %} {% block content %}
 
 <head>
-    <script type="text/javascript" src="{{ url_for('static', filename='home.js') }}"></script>
+    <link rel="stylesheet" href="{{url_for('static', filename='lesson.css')}}" />
+    <script type="text/javascript" src="{{ url_for('static', filename='lesson.js') }}"></script>
 </head>
 
 <script>
-    $(document).ready(function () {
-        let iso_visit = parseInt({{iso_visit}})
-        let spd_visit = parseInt({{spd_visit}})
-        let ape_visit = parseInt({{ape_visit}})
-        let currq = parseInt({{question_to_review}})
-
-        if (iso_visit > 0) {
-            $("#learn_iso_inter").prop("disabled", false)
-            $("#learn_iso_inter").css({color: 'default'})
-        }
-        else {
-            $("#learn_iso_inter").prop("disabled", true)
-            $("#learn_iso_inter").css({color: 'lightgrey'})
-        }
-        if (ape_visit > 0) {
-            $("#learn_aper_inter").prop("disabled", false)
-            $("#learn_aper_inter").css({color: 'default'})
-        }
-        else {
-            $("#learn_aper_inter").prop("disabled", true)
-            $("#learn_aper_inter").css({color: 'lightgrey'})
-        }
-        if (spd_visit > 0) {
-            $("#learn_ss_inter").prop("disabled", false)
-            $("#learn_ss_inter").css({color: 'default'})
-        }
-        else {
-            $("#learn_ss_inter").prop("disabled", true)
-            $("#learn_ss_inter").css({color: 'lightgrey'})
-        }
-
-        $("#quiz").click(function (event) {
-            if (currq > 0) {
-                window.location = "/assessment/{{question_to_review}}"
-            }
-            else {
-                window.location = "/assessment_start"
-            }
-        })
-
-        $("#learn_iso").click(function (event) {
-            window.location = "/lesson/iso"
-        })
-
-        $("#learn_aper").click(function (event) {
-            window.location = "/lesson/aperture"
-        })
-
-        $("#learn_ss").click(function (event) {
-            window.location = "/lesson/shutter_speed"
-        })
-
-        $("#learn_iso_inter").click(function (event) {
-            window.location = "/lesson/interactive/iso"
-        })
-
-        $("#learn_aper_inter").click(function (event) {
-            window.location = "/lesson/interactive/aperture"
-        })
-
-        $("#learn_ss_inter").click(function (event) {
-            window.location = "/lesson/interactive/shutter_speed"
-        })
-
-
-    });
+    let iso_visit = parseInt({{ iso_visit }})
+    let spd_visit = parseInt({{ spd_visit }})
+    let ape_visit = parseInt({{ ape_visit }})
+    let currq = parseInt({{ question_to_review }})
 </script>
-
 
 <body>
     <div class="row title">Lessons</div>
+
     <div class="row">
+        <div id="quiz-finished" class="title small"></div>
         <div class="col-md-4">
 
         </div>
         <div class="col-md-8">
-
-            <button id="learn_iso" class="lesson button2 width"> Learn Iso </button>
+            <button id="learn_iso" class="lesson button2a width hover"> Learn Iso </button>
             <br>
-            <button id="learn_iso_inter" class="lesson button2 width">Learn Iso Interactively</button>
-            <br>
-            <br>
-            <button id="learn_aper" class="lesson button2 width">Learn Aperture</button>
-            <br>
-            <button id="learn_aper_inter" class="lesson button2 width">Learn Aperture Interactively</button>
+            <button id="learn_iso_inter" class="lesson button2a width">Learn Iso Interactively</button>
             <br>
             <br>
-            <button id="learn_ss" class="lesson button2 width">Learn Shutter Speed</button>
+            <button id="learn_aper" class="lesson button2a width hover">Learn Aperture</button>
             <br>
-            <button id="learn_ss_inter" class="lesson button2 width">Learn Shutter Speed Interactively</button>
+            <button id="learn_aper_inter" class="lesson button2a width">Learn Aperture Interactively</button>
+            <br>
+            <br>
+            <button id="learn_ss" class="lesson button2a width hover">Learn Shutter Speed</button>
+            <br>
+            <button id="learn_ss_inter" class="lesson button2a width">Learn Shutter Speed Interactively</button>
             <br>
             <br>
         </div>
@@ -105,8 +44,6 @@
         <div class="col-md-10"></div>
         <div class="col-md-2">
             <button id="quiz" class="button1 right-align">Quiz Now</button>
-            <br>
-            <button id="learn" class="button3 right-align">Learn Now</button>
         </div>
     </div>
 
